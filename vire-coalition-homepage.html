@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRE Coalition - Solidarity is Strength</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --midnight-blue: #191970;
+            --crimson-red: #DC143C;
+            --steel-gray: #71797E;
+            --ivory-white: #FFFFF0;
+            --light-gray: #f8f9fa;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--steel-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'League Spartan', sans-serif;
+            color: var(--midnight-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header and Navigation */
+        header {
+            background-color: var(--midnight-blue);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--ivory-white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--ivory-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--crimson-red);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--ivory-white);
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(25, 25, 112, 0.8), rgba(25, 25, 112, 0.8)), url('/img/hero_img.png') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--ivory-white);
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--ivory-white);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: var(--crimson-red);
+            color: var(--ivory-white);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--ivory-white);
+            border: 2px solid var(--ivory-white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #b01030;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 240, 0.1);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--crimson-red);
+            margin: 15px auto 0;
+        }
+        
+        /* Mission Section */
+        .mission {
+            background-color: var(--light-gray);
+        }
+        
+        .mission-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Values Section */
+        .values {
+            background-color: var(--ivory-white);
+        }
+        
+        .values-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .values-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            flex: 1 1 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            max-width: 250px;
+        }
+        
+        .value-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--crimson-red);
+            margin-bottom: 15px;
+        }
+        
+        /* Join Us Section */
+        .join-us {
+            background-color: var(--midnight-blue);
+            color: var(--ivory-white);
+            text-align: center;
+        }
+        
+        .join-us h2 {
+            color: var(--ivory-white);
+        }
+        
+        /* Blog Section */
+        .blog {
+            background-color: var(--light-gray);
+        }
+        
+        .blog-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .blog-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .blog-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-excerpt {
+            margin-bottom: 20px;
+            color: var(--steel-gray);
+        }
+        
+        .read-more {
+            color: var(--crimson-red);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--midnight-blue);
+        }
+        
+        /* Support Us Section */
+        .support-us {
+            background-color: var(--ivory-white);
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--midnight-blue);
+            color: var(--ivory-white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-links h3 {
+            color: var(--ivory-white);
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--crimson-red);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 240, 0.1);
+            border-radius: 50%;
+            color: var(--ivory-white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--crimson-red);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 240, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+            
+            .value-item {
+                flex: 1 1 calc(50% - 30px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--midnight-blue);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .blog-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">VIRE</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Join Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Solidarity is Strength. <br>Consequences are the Shield.</h1>
+            <p>Building power through unity and resilience. Together, we are unstoppable.</p>
+            <div class="btn-group">
+                <a href="#" class="btn btn-primary">Join the Movement</a>
+                <a href="#" class="btn btn-secondary">Donate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <div class="mission-content">
+                <p>VIRE exists to restore balance by making disrespect and harm against women costly and obsolete. We build power together through unbreakable solidarity and strategic action. Our mission is fueled by empowerment, accountability, and evolution. Together, we are unstoppable.</p>
+                <a href="#" class="btn btn-primary" style="margin-top: 30px;">Learn More About VIRE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values" id="values">
+        <div class="container">
+            <h2 class="section-title">What We Believe</h2>
+            <div class="values-content">
+                <p>We believe in building power through loyalty, resilience, and collective action. We do not beg for respect; we enforce it through unity. Our movement ensures that harmful actions come with visible and decisive consequences, creating a safer, more empowered society for women.</p>
+                
+                <div class="values-list">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h3>Resilience</h3>
+                        <p>Standing firm against challenges and setbacks, growing stronger through adversity.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Loyalty</h3>
+                        <p>Unwavering commitment to our members and mission, supporting each other no matter what.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Consequences</h3>
+                        <p>Ensuring harmful actions are met with clear, visible, and decisive responses.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Purposeful Power</h3>
+                        <p>Using our collective strength strategically to create meaningful change.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us Section -->
+    <section class="join-us" id="join">
+        <div class="container">
+            <h2 class="section-title">Join Us in Building a Stronger Future</h2>
+            <p>We are looking for resilient, loyal, and strategic women ready to act and make an impact. If you believe in solidarity and consequences, VIRE is the movement for you.</p>
+            <a href="#" class="btn btn-primary" style="margin-top: 30px;">Apply to Join</a>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <h2 class="section-title">Latest Stories and Campaigns</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Stay updated with VIRE's latest campaigns, actions, and thought leadership.</p>
+            
+            <div class="blog-cards">
+                <div class="blog-card">
+                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
+                    <div class="blog-content">
+                        <h3 class="blog-title">Solidarity in Action: VIRE's Latest Campaign</h3>
+                        <p class="blog-excerpt">How our members came together to support women in the workplace and create lasting impact.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
+                    <div class="blog-content">
+                        <h3 class="blog-title">Building Power Together: Stories of Change</h3>
+                        <p class="blog-excerpt">Powerful accounts from our community about strength in unity and resilience through challenges.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
+                    <div class="blog-content">
+                        <h3 class="blog-title">The Power of Consequences: Making Change Real</h3>
+                        <p class="blog-excerpt">How accountability creates safer environments for women and transforms cultures of disrespect.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-secondary">Read More Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Us Section -->
+    <section class="support-us" id="support">
+        <div class="container">
+            <h2 class="section-title">Support VIRE's Mission</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px;">Your support helps us empower women, fund campaigns, and create lasting change. Join us in making a real impact.</p>
+            <a href="#" class="btn btn-primary">Donate Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <h3>VIRE Coalition</h3>
+                    <p>Building power through solidarity and strategic action.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Join Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@virecoalition.org</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Movement St, City, ST 12345</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 VIRE Coalition. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(25, 25, 112, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.backgroundColor = 'var(--midnight-blue)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
