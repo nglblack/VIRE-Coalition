@@ -3,667 +3,858 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIRE Coalition - Solidarity is Strength</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>VIRE Coalition</title>
     <style>
         :root {
-            --midnight-blue: #191970;
-            --crimson-red: #DC143C;
-            --steel-gray: #71797E;
-            --ivory-white: #FFFFF0;
-            --light-gray: #f8f9fa;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --dark-blue: #0a0f2c;
+            --gray: #5a5f73;
+            --red: #b22234;
+            --off-white: #f8f8f2;
+            --gold: #c7a008;
+            --white: #ffffff;
+            --black: #000000;
+            --light-gray: #e5e5e5;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--steel-gray);
+            background-color: var(--off-white);
+            color: var(--dark-blue);
             line-height: 1.6;
-            overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4 {
-            font-family: 'League Spartan', sans-serif;
-            color: var(--midnight-blue);
-            margin-bottom: 1rem;
-        }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px 0;
         }
-        
-        /* Header and Navigation */
+
+        /* Header Styles */
         header {
-            background-color: var(--midnight-blue);
+            background-color: var(--dark-blue);
+            color: var(--off-white);
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
-        
-        .nav-container {
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--ivory-white);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--off-white);
             text-decoration: none;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
         }
-        
-        .nav-menu {
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
             display: flex;
             list-style: none;
         }
-        
-        .nav-menu li {
+
+        .nav-links li {
             margin-left: 30px;
         }
-        
-        .nav-menu a {
-            color: var(--ivory-white);
+
+        .nav-links a {
+            color: var(--off-white);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        
-        .nav-menu a:hover {
-            color: var(--crimson-red);
+
+        .nav-links a:hover {
+            color: var(--gold);
         }
-        
+
+        .active {
+            color: var(--gold) !important;
+            border-bottom: 2px solid var(--gold);
+        }
+
         .hamburger {
             display: none;
             cursor: pointer;
-            color: var(--ivory-white);
-            font-size: 24px;
         }
-        
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--off-white);
+        }
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(25, 25, 112, 0.8), rgba(25, 25, 112, 0.8)), url('/img/hero_img.png') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
+            margin-top: 80px;
+            padding: 100px 0;
+            background-color: var(--dark-blue);
+            color: var(--off-white);
             text-align: center;
-            color: var(--ivory-white);
-            margin-top: 70px;
+            position: relative;
         }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: var(--off-white);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
         }
-        
+
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--ivory-white);
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
-        
+
         .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
-        
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
+
         .btn {
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
             display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--red);
+            color: var(--off-white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
-        
-        .btn-primary {
-            background-color: var(--crimson-red);
-            color: var(--ivory-white);
+
+        .btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--ivory-white);
-            border: 2px solid var(--ivory-white);
+
+        /* Card Styles */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-        
-        .btn-primary:hover {
-            background-color: #b01030;
+
+        .card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .btn-secondary:hover {
-            background-color: rgba(255, 255, 240, 0.1);
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        /* Section Styling */
+
+        .card-img {
+            height: 200px;
+            background-color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+
+        .card-text {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        /* Section Styles */
         section {
             padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
+            font-size: 36px;
             margin-bottom: 50px;
             position: relative;
         }
-        
-        .section-title:after {
+
+        .section-title::after {
             content: '';
-            display: block;
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--crimson-red);
-            margin: 15px auto 0;
+            background-color: var(--gold);
         }
-        
-        /* Mission Section */
-        .mission {
-            background-color: var(--light-gray);
-        }
-        
-        .mission-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Values Section */
-        .values {
-            background-color: var(--ivory-white);
-        }
-        
-        .values-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .values-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .value-item {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: var(--box-shadow);
-            flex: 1 1 200px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            max-width: 250px;
-        }
-        
-        .value-item:hover {
-            transform: translateY(-10px);
-        }
-        
-        .value-icon {
-            font-size: 2.5rem;
-            color: var(--crimson-red);
-            margin-bottom: 15px;
-        }
-        
-        /* Join Us Section */
-        .join-us {
-            background-color: var(--midnight-blue);
-            color: var(--ivory-white);
-            text-align: center;
-        }
-        
-        .join-us h2 {
-            color: var(--ivory-white);
-        }
-        
-        /* Blog Section */
-        .blog {
-            background-color: var(--light-gray);
-        }
-        
-        .blog-cards {
+
+        /* About Page */
+        .about-section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
         }
-        
-        .blog-card {
-            background-color: #fff;
-            border-radius: 8px;
+
+        .about-img {
+            height: 400px;
+            background-color: var(--gray);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-            height: 100%;
         }
-        
-        .blog-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .blog-img {
-            height: 200px;
+
+        .about-img img {
             width: 100%;
+            height: 100%;
             object-fit: cover;
         }
-        
-        .blog-content {
-            padding: 20px;
+
+        .about-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
         }
-        
-        .blog-title {
-            font-size: 1.25rem;
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 16px;
+            color: var(--dark-blue);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(199, 160, 8, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Donation Styles */
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .donation-amount {
+            flex: 1;
+            min-width: 100px;
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .donation-amount:hover {
+            border-color: var(--gold);
+        }
+
+        .donation-amount.active {
+            border-color: var(--gold);
+            background-color: rgba(199, 160, 8, 0.1);
+        }
+
+        .custom-amount {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-img {
+            height: 200px;
+            background-color: var(--gray);
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-date {
+            color: var(--gold);
+            font-weight: 500;
             margin-bottom: 10px;
         }
-        
+
+        .blog-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
         .blog-excerpt {
+            color: var(--gray);
             margin-bottom: 20px;
-            color: var(--steel-gray);
         }
-        
-        .read-more {
-            color: var(--crimson-red);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: color 0.3s;
-        }
-        
-        .read-more:hover {
-            color: var(--midnight-blue);
-        }
-        
-        /* Support Us Section */
-        .support-us {
-            background-color: var(--ivory-white);
-            text-align: center;
-        }
-        
-        /* Footer */
+
+        /* Footer Styles */
         footer {
-            background-color: var(--midnight-blue);
-            color: var(--ivory-white);
-            padding: 60px 0 20px;
+            background-color: var(--dark-blue);
+            color: var(--off-white);
+            padding: 60px 0 30px;
         }
-        
-        .footer-content {
+
+        .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-bottom: 40px;
         }
-        
-        .footer-links h3 {
-            color: var(--ivory-white);
+
+        .footer-column h3 {
+            font-size: 22px;
             margin-bottom: 20px;
-            font-size: 1.25rem;
+            position: relative;
+            padding-bottom: 10px;
         }
-        
-        .footer-links ul {
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links {
             list-style: none;
         }
-        
+
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-        
+
         .footer-links a {
-            color: var(--light-gray);
+            color: var(--off-white);
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-links a:hover {
-            color: var(--crimson-red);
+            color: var(--gold);
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 240, 0.1);
             border-radius: 50%;
-            color: var(--ivory-white);
-            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--off-white);
+            text-decoration: none;
+            transition: all 0.3s;
         }
-        
+
         .social-icon:hover {
-            background-color: var(--crimson-red);
-            transform: translateY(-5px);
+            background-color: var(--gold);
+            transform: translateY(-3px);
         }
-        
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .newsletter-btn {
+            background-color: var(--gold);
+            color: var(--dark-blue);
+            padding: 0 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         .copyright {
             text-align: center;
+            margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 240, 0.1);
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-            
-            .value-item {
-                flex: 1 1 calc(50% - 30px);
-            }
-        }
-        
+
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            .nav-menu {
+            .nav-links {
                 position: fixed;
                 left: -100%;
                 top: 70px;
                 flex-direction: column;
-                background-color: var(--midnight-blue);
+                background-color: var(--dark-blue);
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
                 padding: 20px 0;
             }
-            
-            .nav-menu.active {
+
+            .nav-links.active {
                 left: 0;
             }
-            
-            .nav-menu li {
-                margin: 20px 0;
+
+            .nav-links li {
+                margin: 15px 0;
             }
-            
+
             .hamburger {
                 display: block;
             }
-            
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
             .hero h1 {
-                font-size: 2.25rem;
+                font-size: 36px;
             }
-            
+
             .hero p {
-                font-size: 1rem;
+                font-size: 18px;
             }
-            
-            .blog-cards {
-                grid-template-columns: 1fr;
+
+            .section-title {
+                font-size: 30px;
             }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+        }
+
+        /* Page Transitions */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .social-links {
-                justify-content: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header and Navigation -->
     <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">VIRE</a>
+        <div class="container">
             <nav>
-                <ul class="nav-menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Join Us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Donate</a></li>
-                    <li><a href="#">Contact</a></li>
+                <a href="#" class="logo" onclick="showPage('home')">VIRE <span>Coalition</span></a>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="join">Join Us</a></li>
+                    <li><a href="#" class="nav-link" data-page="donate">Donate</a></li>
+                    <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
+                    <li><a href="#" class="nav-link" data-page="resources">Resources</a></li>
                 </ul>
                 <div class="hamburger">
-                    <i class="fas fa-bars"></i>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Solidarity is Strength. <br>Consequences are the Shield.</h1>
-            <p>Building power through unity and resilience. Together, we are unstoppable.</p>
-            <div class="btn-group">
-                <a href="#" class="btn btn-primary">Join the Movement</a>
-                <a href="#" class="btn btn-secondary">Donate</a>
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="container">
+                <h1>Solidarity. Resilience. Action.</h1>
+                <p>VIRE is a movement dedicated to empowering women through solidarity, resilience, and collective action. Drawing inspiration from nature, we're creating a safer, more equal society for all women.</p>
+                <a href="#" class="btn" onclick="showPage('join')">Join The Movement</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Mission Section -->
-    <section class="mission" id="mission">
-        <div class="container">
-            <h2 class="section-title">Our Mission</h2>
-            <div class="mission-content">
-                <p>VIRE exists to restore balance by making disrespect and harm against women costly and obsolete. We build power together through unbreakable solidarity and strategic action. Our mission is fueled by empowerment, accountability, and evolution. Together, we are unstoppable.</p>
-                <a href="#" class="btn btn-primary" style="margin-top: 30px;">Learn More About VIRE</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="values" id="values">
-        <div class="container">
-            <h2 class="section-title">What We Believe</h2>
-            <div class="values-content">
-                <p>We believe in building power through loyalty, resilience, and collective action. We do not beg for respect; we enforce it through unity. Our movement ensures that harmful actions come with visible and decisive consequences, creating a safer, more empowered society for women.</p>
-                
-                <div class="values-list">
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-fist-raised"></i>
+        <section>
+            <div class="container">
+                <h2 class="section-title">Our Core Philosophy</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Solidarity">
                         </div>
-                        <h3>Resilience</h3>
-                        <p>Standing firm against challenges and setbacks, growing stronger through adversity.</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-hands-helping"></i>
+                        <div class="card-content">
+                            <h3 class="card-title">Solidarity</h3>
+                            <p class="card-text">When women stand together, we create a network of support and strength that empowers each individual. Our greatest power comes from unity and collective purpose.</p>
                         </div>
-                        <h3>Loyalty</h3>
-                        <p>Unwavering commitment to our members and mission, supporting each other no matter what.</p>
                     </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-balance-scale"></i>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Consequences">
                         </div>
-                        <h3>Consequences</h3>
-                        <p>Ensuring harmful actions are met with clear, visible, and decisive responses.</p>
+                        <div class="card-content">
+                            <h3 class="card-title">Accountability</h3>
+                            <p class="card-text">We believe in reintroducing accountability for harmful actions. When society fails to protect women, we stand together to ensure there are consequences for those who abuse power.</p>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-bolt"></i>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Empowerment">
                         </div>
-                        <h3>Purposeful Power</h3>
-                        <p>Using our collective strength strategically to create meaningful change.</p>
+                        <div class="card-content">
+                            <h3 class="card-title">Empowerment</h3>
+                            <p class="card-text">Through education, resources, and community support, we empower women to lead with confidence and create lasting change in their communities and beyond.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn" onclick="showPage('about')">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: var(--dark-blue); color: var(--off-white);">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--off-white);">Get Involved Today</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Apply">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Apply to Join</h3>
+                            <p class="card-text">We're looking for resilient, loyal, and strategic women who believe in the power of solidarity. Apply today to be part of our growing coalition.</p>
+                            <a href="#" class="btn" onclick="showPage('join')">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Donate">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Support Our Cause</h3>
+                            <p class="card-text">Your contributions help fund our campaigns, legal support, and educational resources. Every donation makes a difference in our work.</p>
+                            <a href="#" class="btn" onclick="showPage('donate')">Donate</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Resources">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Access Resources</h3>
+                            <p class="card-text">Explore our collection of educational materials, articles, and tools designed to support women's empowerment and collective action.</p>
+                            <a href="#" class="btn" onclick="showPage('resources')">View Resources</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Join Us Section -->
-    <section class="join-us" id="join">
-        <div class="container">
-            <h2 class="section-title">Join Us in Building a Stronger Future</h2>
-            <p>We are looking for resilient, loyal, and strategic women ready to act and make an impact. If you believe in solidarity and consequences, VIRE is the movement for you.</p>
-            <a href="#" class="btn btn-primary" style="margin-top: 30px;">Apply to Join</a>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section class="blog" id="blog">
-        <div class="container">
-            <h2 class="section-title">Latest Stories and Campaigns</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Stay updated with VIRE's latest campaigns, actions, and thought leadership.</p>
-            
-            <div class="blog-cards">
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
-                    <div class="blog-content">
-                        <h3 class="blog-title">Solidarity in Action: VIRE's Latest Campaign</h3>
-                        <p class="blog-excerpt">How our members came together to support women in the workplace and create lasting impact.</p>
-                        <a href="#" class="read-more">Read More →</a>
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section style="margin-top: 80px;">
+            <div class="container">
+                <h2 class="section-title">About VIRE Coalition</h2>
+                <div class="about-section">
+                    <div class="about-img">
+                        <img src="/api/placeholder/800/600" alt="VIRE Coalition">
                     </div>
-                </div>
-                
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
-                    <div class="blog-content">
-                        <h3 class="blog-title">Building Power Together: Stories of Change</h3>
-                        <p class="blog-excerpt">Powerful accounts from our community about strength in unity and resilience through challenges.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <img src="/api/placeholder/400/200" alt="Blog Post Image" class="blog-img">
-                    <div class="blog-content">
-                        <h3 class="blog-title">The Power of Consequences: Making Change Real</h3>
-                        <p class="blog-excerpt">How accountability creates safer environments for women and transforms cultures of disrespect.</p>
-                        <a href="#" class="read-more">Read More →</a>
+                    <div class="about-content">
+                        <h2>Our Mission & Values</h2>
+                        <p>The VIRE Coalition is dedicated to empowering women through solidarity and collective action. Our name reflects our core values:</p>
+                        <p><strong>V</strong>alor - We face challenges with courage and determination.</p>
+                        <p><strong>I</strong>ntegrity - We act according to strong moral principles.</p>
+                        <p><strong>R</strong>esilience - We adapt and recover from difficulties.</p>
+                        <p><strong>E</strong>mpowerment - We help women gain confidence and strength to control their lives.</p>
+                        <p>We believe that together, women can create profound change in society by standing united and taking action against harmful behavior, ensuring consequences for those who abuse power.</p>
                     </div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#" class="btn btn-secondary">Read More Articles</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Support Us Section -->
-    <section class="support-us" id="support">
-        <div class="container">
-            <h2 class="section-title">Support VIRE's Mission</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px;">Your support helps us empower women, fund campaigns, and create lasting change. Join us in making a real impact.</p>
-            <a href="#" class="btn btn-primary">Donate Now</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <h3>VIRE Coalition</h3>
-                    <p>Building power through solidarity and strategic action.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <section style="background-color: var(--light-gray);">
+            <div class="container">
+                <h2 class="section-title">The Power of Solidarity</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Collective Strength">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Collective Strength</h3>
+                            <p class="card-text">When women unite, we create a powerful force for change. Together, we can accomplish what would be impossible alone, protecting each other and amplifying our voices.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Taking Action">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Taking Action</h3>
+                            <p class="card-text">VIRE believes in active resistance against harmful behaviors. When systems fail to protect women, we stand together to ensure real accountability and lasting change.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="/api/placeholder/600/400" alt="Creating Change">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Creating Change</h3>
+                            <p class="card-text">Through organized collective action, education, and community support, we're building a world where women can thrive without fear, knowing they're protected by their community.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>Navigation</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Join Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Donate</a></li>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">Our Inspiration</h2>
+                <div class="about-section">
+                    <div class="about-content">
+                        <p>VIRE draws inspiration from nature's examples of female solidarity and collective power. In particular, we were inspired by observing how certain social structures in nature demonstrate the effectiveness of female solidarity.</p>
+                        <p>In some primate communities, such as bonobos, females form strong social bonds with each other regardless of familial ties. These relationships create powerful alliances that maintain social order and ensure group harmony.</p>
+                        <p>This natural model shows us that when females band together in solidarity, they can effectively:</p>
+                        <ul style="margin: 20px 0; padding-left: 20px;">
+                            <li>Create safer, more peaceful communities</li>
+                            <li>Respond collectively to threats</li>
+                            <li>Ensure accountability for harmful behavior</li>
+                            <li>Build cooperative rather than competitive social structures</li>
+                        </ul>
+                        <p>While this natural example provided initial inspiration, VIRE has evolved into a distinctly human movement with strategies tailored to address the unique challenges women face in today's society.</p>
+                    </div>
+                    <div class="about-img">
+                        <img src="/api/placeholder/800/600" alt="Inspiration">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn" onclick="showPage('join')">Join Our Movement</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Join Us Page -->
+    <div id="join" class="page">
+        <section style="margin-top: 80px;">
+            <div class="container">
+                <h2 class="section-title">Join the VIRE Coalition</h2>
+                <div class="form-container">
+                    <p style="margin-bottom: 30px;">We're looking for resilient, loyal, and strategic women who believe in the power of solidarity and collective action. By joining VIRE, you'll become part of a movement dedicated to creating lasting change and ensuring accountability.</p>
+                    
+                    <h3 style="margin-bottom: 20px;">Eligibility Criteria</h3>
+                    <ul style="margin-bottom: 30px; padding-left: 20px;">
+                        <li>Commitment to female solidarity and collective action</li>
+                        <li>Resilience in the face of challenges</li>
+                        <li>Loyalty to the coalition's values and mission</li>
+                        <li>Strategic thinking and problem-solving abilities</li>
+                        <li>Willingness to actively contribute to the movement's goals</li>
                     </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> info@virecoalition.org</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Movement St, City, ST 12345</li>
-                    </ul>
+                    
+                    <form id="application-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">City & Country</label>
+                            <input type="text" id="location" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="why-join">Why do you want to join the VIRE Coalition?</label>
+                            <textarea id="why-join" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="resilience">Describe a challenging situation you faced and how you overcame it.</label>
+                            <textarea id="resilience" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Do you have any experience with community organizing, activism, or women's groups?</label>
+                            <textarea id="experience" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">What skills or resources can you contribute to the coalition?</label>
+                            <textarea id="skills" class="form-control"></textarea>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn">Submit Application</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>© 2025 VIRE Coalition. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </section>
+    </div>
 
-    <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header scroll effect
-        const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(25, 25, 112, 0.95)';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
-            } else {
-                header.style.backgroundColor = 'var(--midnight-blue)';
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            }
-        });
-    </script>
-</body>
-</html>
+    <!-- Donate Page -->
+    <div id="donate" class="page">
+        <section style="margin-top: 80px;">
+            <div class="container">
+                <h2 class="section-title">Support the Movement</h2>
+                <div class="form-container">
+                    <p style="margin-bottom: 30px;">Your contributions help fund our campaigns, legal support, educational resources, and community initiatives. Every donation makes a difference in empowering women through solidarity.</p>
+                    
+                    <h3 style="margin-bottom: 20px;">Where Your Donation Goes</h3>
+                    <ul style="margin-bottom: 30px; padding-left: 20px;">
+                        <li>Educational programs and awareness campaigns</li>
+                        <li>Legal support for women facing injustice</li>
+                        <li>Community organizing and coalition building</li>
+                        <li>Advocacy for policies that protect women</li>
+                        <li>Resources for women in need of support</li>
+                    </ul>
+                    
+                    <form id="donation-form">
+                        <h3 style="margin-bottom: 20px;">Choose Your Donation Amount</h3>
+                        <div class="donation-options">
+                            <div class="donation-amount" onclick="selectAmount(25)">$25</div>
+                            <div class="donation-amount" onclick="selectAmount(50)">$50</div>
+                            <div class="donation-amount" onclick="selectAmount(100)">$100</div>
+                            <div class="donation-amount" onclick="selectAmount(250)">$250</div>
+                            <div class="donation-amount" onclick="selectAmount('custom')">Custom</div>
+                        </div>
+                        <div class="custom-amount" style="display: none;">
+                            <div class="form-group">
+                                <label for="custom-amount">Enter Custom Amount ($)</label>
+                                <input type="number" id="custom-amount" class="form-control" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="recurring"> Make this a monthly recurring donation
+                            </label>
+                        </div>
+                        
+                        <h3 style="margin: 30px 0 20px;">Personal Information</h3>
+                        <div class="form-group">
+                            <label for="donor-name">Full Name</label>
+                            <input type="text" id="donor-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donor-email">Email Address</label>
+                            <input type="email" id="
