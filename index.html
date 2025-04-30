@@ -231,36 +231,6 @@
             background-color: var(--gold);
         }
 
-        /* About Page */
-        .about-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-img {
-            height: 400px;
-            background-color: var(--gray);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .about-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-content h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .about-content p {
-            margin-bottom: 20px;
-        }
-
         /* Form Styles */
         .form-container {
             background-color: var(--white);
@@ -302,82 +272,39 @@
             resize: vertical;
         }
 
-        /* Donation Styles */
-        .donation-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+        /* List Styles */
+        .feature-list {
+            list-style: none;
             margin-bottom: 30px;
         }
 
-        .donation-amount {
-            flex: 1;
-            min-width: 100px;
-            padding: 15px;
-            border: 2px solid var(--light-gray);
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .donation-amount:hover {
-            border-color: var(--gold);
-        }
-
-        .donation-amount.active {
-            border-color: var(--gold);
-            background-color: rgba(199, 160, 8, 0.1);
-        }
-
-        .custom-amount {
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        /* Blog Styles */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .blog-img {
-            height: 200px;
-            background-color: var(--gray);
-        }
-
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 25px;
-        }
-
-        .blog-date {
-            color: var(--gold);
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .blog-title {
-            font-size: 22px;
+        .feature-list li {
+            position: relative;
+            padding-left: 30px;
             margin-bottom: 15px;
+            color: black
         }
 
-        .blog-excerpt {
-            color: var(--gray);
-            margin-bottom: 20px;
+        .feature-list li:before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* About section */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content {
+            padding: 20px;
         }
 
         /* Footer Styles */
@@ -481,6 +408,14 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Split Section */
+        .split-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+
         /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-links {
@@ -535,27 +470,31 @@
             .section-title {
                 font-size: 30px;
             }
-        }
-
-        /* Page Transitions */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            
+            .split-section {
+                grid-template-columns: 1fr;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        }
+
+        .accent-color {
+            color: var(--gold);
+        }
+
+        .bg-dark {
+            background-color: var(--dark-blue);
+            color: var(--off-white);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
         }
     </style>
 </head>
@@ -563,14 +502,11 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo" onclick="showPage('home')">VIRE <span>Coalition</span></a>
+                <a href="#" class="logo">VIRE <span>Coalition</span></a>
                 <ul class="nav-links">
-                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
-                    <li><a href="#" class="nav-link" data-page="join">Join Us</a></li>
-                    <li><a href="#" class="nav-link" data-page="donate">Donate</a></li>
-                    <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
-                    <li><a href="#" class="nav-link" data-page="resources">Resources</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#why-join" class="nav-link">Why Join</a></li>
+                    <li><a href="#apply" class="nav-link">Apply</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -581,280 +517,220 @@
         </div>
     </header>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <div class="container">
-                <h1>Solidarity. Resilience. Action.</h1>
-                <p>VIRE is a movement dedicated to empowering women through solidarity, resilience, and collective action. Drawing inspiration from nature, we're creating a safer, more equal society for all women.</p>
-                <a href="#" class="btn" onclick="showPage('join')">Join The Movement</a>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Resilience. Solidarity. <span class="accent-color">Consequence.</span></h1>
+            <p>VIRE is a movement dedicated to empowering women through solidarity, resilience, and collective action. Drawing inspiration from nature, we're creating a safer, more equal society for all women.</p>
+            <a href="#apply" class="btn">Join The Coalition</a>
+        </div>
+    </section>
 
-        <section>
-            <div class="container">
-                <h2 class="section-title">Our Core Philosophy</h2>
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Solidarity">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Solidarity</h3>
-                            <p class="card-text">When women stand together, we create a network of support and strength that empowers each individual. Our greatest power comes from unity and collective purpose.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Consequences">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Accountability</h3>
-                            <p class="card-text">We believe in reintroducing accountability for harmful actions. When society fails to protect women, we stand together to ensure there are consequences for those who abuse power.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Empowerment">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Empowerment</h3>
-                            <p class="card-text">Through education, resources, and community support, we empower women to lead with confidence and create lasting change in their communities and beyond.</p>
-                        </div>
-                    </div>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">What Is the VIRE Coalition?</h2>
+            <div class="about-section">
+                <div class="about-content">
+                    <p>VIRE is not a support group. It's not a venting space. It's not about safety through silence or asking the system to be nicer.</p>
+                    <p><strong>VIRE is a coalition of resilient women building the consequence layer.</strong></p>
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">We believe:</h3>
+                    <ul class="feature-list">
+                        <li>Harm should never be cost-free</li>
+                        <li>Disrespect should be expensive</li>
+                        <li>Solidarity should be public, strategic, and unbreakable</li>
+                    </ul>
+                    
+                    <p>Our mission is to <strong>restore balance</strong> by making harm and entitlement <strong>obsolete</strong>, and by replacing broken systems with visible, woman-led power.</p>
                 </div>
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="btn" onclick="showPage('about')">Learn More About Us</a>
+                <div class="about-content">
+                    <h3 style="margin-bottom: 20px;">We build:</h3>
+                    <ul class="feature-list">
+                        <li>Tactical solidarity networks</li>
+                        <li>High-impact culture campaigns</li>
+                        <li>Financial and emotional infrastructure for women who no longer want to beg for dignity</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">If you've ever said:</h3>
+                    <ul class="feature-list">
+                        <li>"This doesn't work, but no one's fixing it."</li>
+                        <li>"I want to build something better — but not alone."</li>
+                        <li>"I don't want to burn out. I want to <em>win.</em>"</li>
+                    </ul>
+                    <p><strong>Then VIRE was built for you.</strong></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section style="background-color: var(--dark-blue); color: var(--off-white);">
-            <div class="container">
-                <h2 class="section-title" style="color: var(--off-white);">Get Involved Today</h2>
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Apply">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Apply to Join</h3>
-                            <p class="card-text">We're looking for resilient, loyal, and strategic women who believe in the power of solidarity. Apply today to be part of our growing coalition.</p>
-                            <a href="#" class="btn" onclick="showPage('join')">Apply Now</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Donate">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Support Our Cause</h3>
-                            <p class="card-text">Your contributions help fund our campaigns, legal support, and educational resources. Every donation makes a difference in our work.</p>
-                            <a href="#" class="btn" onclick="showPage('donate')">Donate</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Resources">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Access Resources</h3>
-                            <p class="card-text">Explore our collection of educational materials, articles, and tools designed to support women's empowerment and collective action.</p>
-                            <a href="#" class="btn" onclick="showPage('resources')">View Resources</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page">
-        <section style="margin-top: 80px;">
-            <div class="container">
-                <h2 class="section-title">About VIRE Coalition</h2>
-                <div class="about-section">
-                    <div class="about-img">
-                        <img src="/api/placeholder/800/600" alt="VIRE Coalition">
-                    </div>
-                    <div class="about-content">
-                        <h2>Our Mission & Values</h2>
-                        <p>The VIRE Coalition is dedicated to empowering women through solidarity and collective action. Our name reflects our core values:</p>
-                        <p><strong>V</strong>alor - We face challenges with courage and determination.</p>
-                        <p><strong>I</strong>ntegrity - We act according to strong moral principles.</p>
-                        <p><strong>R</strong>esilience - We adapt and recover from difficulties.</p>
-                        <p><strong>E</strong>mpowerment - We help women gain confidence and strength to control their lives.</p>
-                        <p>We believe that together, women can create profound change in society by standing united and taking action against harmful behavior, ensuring consequences for those who abuse power.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background-color: var(--light-gray);">
-            <div class="container">
-                <h2 class="section-title">The Power of Solidarity</h2>
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Collective Strength">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Collective Strength</h3>
-                            <p class="card-text">When women unite, we create a powerful force for change. Together, we can accomplish what would be impossible alone, protecting each other and amplifying our voices.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Taking Action">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Taking Action</h3>
-                            <p class="card-text">VIRE believes in active resistance against harmful behaviors. When systems fail to protect women, we stand together to ensure real accountability and lasting change.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="/api/placeholder/600/400" alt="Creating Change">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Creating Change</h3>
-                            <p class="card-text">Through organized collective action, education, and community support, we're building a world where women can thrive without fear, knowing they're protected by their community.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2 class="section-title">Our Inspiration</h2>
-                <div class="about-section">
-                    <div class="about-content">
-                        <p>VIRE draws inspiration from nature's examples of female solidarity and collective power. In particular, we were inspired by observing how certain social structures in nature demonstrate the effectiveness of female solidarity.</p>
-                        <p>In some primate communities, such as bonobos, females form strong social bonds with each other regardless of familial ties. These relationships create powerful alliances that maintain social order and ensure group harmony.</p>
-                        <p>This natural model shows us that when females band together in solidarity, they can effectively:</p>
-                        <ul style="margin: 20px 0; padding-left: 20px;">
-                            <li>Create safer, more peaceful communities</li>
-                            <li>Respond collectively to threats</li>
-                            <li>Ensure accountability for harmful behavior</li>
-                            <li>Build cooperative rather than competitive social structures</li>
+    <!-- Why Join Section -->
+    <section id="why-join" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--off-white);">Why Join?</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">What You Bring</h3>
+                        <ul class="feature-list">
+                            <li>Resilience that doesn't just bounce back — it builds forward</li>
+                            <li>Loyalty that holds the line</li>
+                            <li>Vision that scales</li>
                         </ul>
-                        <p>While this natural example provided initial inspiration, VIRE has evolved into a distinctly human movement with strategies tailored to address the unique challenges women face in today's society.</p>
-                    </div>
-                    <div class="about-img">
-                        <img src="/api/placeholder/800/600" alt="Inspiration">
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="btn" onclick="showPage('join')">Join Our Movement</a>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 class="card-title">What You Get</h3>
+                        <ul class="feature-list">
+                            <li>A strategic circle of high-agency women</li>
+                            <li>A place to build and move — without explaining yourself first</li>
+                            <li>A mission that gives weight to your voice, and structure to your power</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+            <div style="text-align: center; margin-top: 40px; color: var(--off-white);">
+                <p style="font-size: 22px; margin-bottom: 30px;">Because you're not here to be liked. You're here to build pressure — and protect what's sacred. You've already left something behind: a job, a platform, a system that didn't deserve you.</p>
+                <p style="font-size: 24px; font-weight: bold;">You don't need permission. You just need <span class="accent-color">the right circle</span>.</p>
+                <a href="#apply" class="btn" style="margin-top: 30px;">Apply Now</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- Join Us Page -->
-    <div id="join" class="page">
-        <section style="margin-top: 80px;">
-            <div class="container">
-                <h2 class="section-title">Join the VIRE Coalition</h2>
-                <div class="form-container">
-                    <p style="margin-bottom: 30px;">We're looking for resilient, loyal, and strategic women who believe in the power of solidarity and collective action. By joining VIRE, you'll become part of a movement dedicated to creating lasting change and ensuring accountability.</p>
-                    
-                    <h3 style="margin-bottom: 20px;">Eligibility Criteria</h3>
-                    <ul style="margin-bottom: 30px; padding-left: 20px;">
-                        <li>Commitment to female solidarity and collective action</li>
-                        <li>Resilience in the face of challenges</li>
-                        <li>Loyalty to the coalition's values and mission</li>
-                        <li>Strategic thinking and problem-solving abilities</li>
-                        <li>Willingness to actively contribute to the movement's goals</li>
+    <!-- Application Form Section -->
+    <section id="apply">
+        <div class="container">
+            <h2 class="section-title">Join the VIRE Coalition</h2>
+            <div class="form-container">
+                <p style="margin-bottom: 30px; text-align: center; font-size: 18px;">We're looking for resilient, loyal, and strategic women who are ready to build the consequence layer.</p>
+                
+                <form id="application-form" action="https://formspree.io/f/mblodbgo" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile">LinkedIn / Website / Work Profile</label>
+                        <input type="text" id="profile" name="profile" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="motivation">What draws you to this? (Short answer)</label>
+                        <textarea id="motivation" name="motivation" class="form-control" required placeholder="We don't need your resume. We want to know what pulled you here."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="additional">Optional: Anything else you'd like to share?</label>
+                        <textarea id="additional" name="additional" class="form-control"></textarea>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="founding-circle" name="founding_circle">
+                        <label for="founding-circle">I'd like to be considered for the Founding Circle.</label>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Submit Application</button>
+                    </div>
+                </form>
+                <script>
+                    const form = document.getElementById("application-form");
+                    form.addEventListener("submit", async function (e) {
+                      e.preventDefault();
+                      const data = new FormData(form);
+                      const response = await fetch(form.action, {
+                        method: "POST",
+                        body: data,
+                        headers: {
+                          'Accept': 'application/json'
+                        }
+                      });
+                      if (response.ok) {
+                        form.innerHTML = "<p style='text-align:center; font-size:18px;'>Thanks for applying. You're in powerful company.</p>";
+                      } else {
+                        alert("Oops! There was a problem submitting your form.");
+                      }
+                    });
+                  </script>
+                  
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>VIRE Coalition</h3>
+                    <p>Building a coalition of resilient women to create the consequence layer and restore balance.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About VIRE</a></li>
+                        <li><a href="#why-join">Why Join</a></li>
+                        <li><a href="#apply">Apply</a></li>
                     </ul>
-                    
-                    <form id="application-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="location">City & Country</label>
-                            <input type="text" id="location" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="why-join">Why do you want to join the VIRE Coalition?</label>
-                            <textarea id="why-join" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="resilience">Describe a challenging situation you faced and how you overcame it.</label>
-                            <textarea id="resilience" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="experience">Do you have any experience with community organizing, activism, or women's groups?</label>
-                            <textarea id="experience" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="skills">What skills or resources can you contribute to the coalition?</label>
-                            <textarea id="skills" class="form-control"></textarea>
-                        </div>
-                        <div style="text-align: center;">
-                            <button type="submit" class="btn">Submit Application</button>
-                        </div>
-                    </form>
+                </div>
+                <div class="footer-column">
+                    <h3>Stay Updated</h3>
+                    <p>Join our newsletter to receive updates and news about the coalition.</p>
+                    <form action="https://virecoalition.substack.com/api/v1/free" method="POST" target="_blank" class="newsletter-form">
+                        <input 
+                          type="email" 
+                          name="email" 
+                          placeholder="Your Email" 
+                          class="newsletter-input" 
+                          required
+                        >
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                      </form>
+                      
+                                            
                 </div>
             </div>
-        </section>
-    </div>
+            <div class="copyright">
+                <p>&copy; 2025 VIRE Coalition. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- Donate Page -->
-    <div id="donate" class="page">
-        <section style="margin-top: 80px;">
-            <div class="container">
-                <h2 class="section-title">Support the Movement</h2>
-                <div class="form-container">
-                    <p style="margin-bottom: 30px;">Your contributions help fund our campaigns, legal support, educational resources, and community initiatives. Every donation makes a difference in empowering women through solidarity.</p>
-                    
-                    <h3 style="margin-bottom: 20px;">Where Your Donation Goes</h3>
-                    <ul style="margin-bottom: 30px; padding-left: 20px;">
-                        <li>Educational programs and awareness campaigns</li>
-                        <li>Legal support for women facing injustice</li>
-                        <li>Community organizing and coalition building</li>
-                        <li>Advocacy for policies that protect women</li>
-                        <li>Resources for women in need of support</li>
-                    </ul>
-                    
-                    <form id="donation-form">
-                        <h3 style="margin-bottom: 20px;">Choose Your Donation Amount</h3>
-                        <div class="donation-options">
-                            <div class="donation-amount" onclick="selectAmount(25)">$25</div>
-                            <div class="donation-amount" onclick="selectAmount(50)">$50</div>
-                            <div class="donation-amount" onclick="selectAmount(100)">$100</div>
-                            <div class="donation-amount" onclick="selectAmount(250)">$250</div>
-                            <div class="donation-amount" onclick="selectAmount('custom')">Custom</div>
-                        </div>
-                        <div class="custom-amount" style="display: none;">
-                            <div class="form-group">
-                                <label for="custom-amount">Enter Custom Amount ($)</label>
-                                <input type="number" id="custom-amount" class="form-control" min="1">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" id="recurring"> Make this a monthly recurring donation
-                            </label>
-                        </div>
-                        
-                        <h3 style="margin: 30px 0 20px;">Personal Information</h3>
-                        <div class="form-group">
-                            <label for="donor-name">Full Name</label>
-                            <input type="text" id="donor-name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="donor-email">Email Address</label>
-                            <input type="email" id="
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        })
+
+        document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }))
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
